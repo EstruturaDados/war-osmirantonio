@@ -31,7 +31,7 @@
 
 // --- Função Principal (main) ---
 // Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
-int main() {
+//int main() {
     // 1. Configuração Inicial (Setup):
     // - Define o locale para português.
     // - Inicializa a semente para geração de números aleatórios com base no tempo atual.
@@ -51,8 +51,8 @@ int main() {
     // 3. Limpeza:
     // - Ao final do jogo, libera a memória alocada para o mapa para evitar vazamentos de memória.
 
-    return 0;
-}
+  //  return 0;
+
 
 // --- Implementação das Funções ---
 
@@ -96,3 +96,53 @@ int main() {
 
 // limparBufferEntrada():
 // Função utilitária para limpar o buffer de entrada do teclado (stdin), evitando problemas com leituras consecutivas de scanf e getchar.
+
+#include <stdio.h>
+#include <string.h>
+
+// Definição da struct Territorio
+// Essa estrutura representa um território no jogo,
+// contendo o nome, a cor do exército e a quantidade de tropas.
+struct Territorio {
+    char nome[30];   // Nome do território
+    char cor[10];    // Cor do exército associado ao território
+    int tropas;      // Quantidade de tropas nesse território
+};
+
+int main() {
+    // Vetor para armazenar os 5 territórios
+    struct Territorio territorios[5];
+
+    // Cadastro dos 5 territórios
+    printf("=== Cadastro de Territórios ===\n\n");
+
+    for (int i = 0; i < 5; i++) {
+        printf("Território %d:\n", i + 1);
+
+        // Leitura do nome do território
+        printf("Digite o nome do território: ");
+        scanf(" %[^\n]", territorios[i].nome);  // Lê até o usuário apertar Enter
+
+        // Leitura da cor do exército
+        printf("Digite a cor do exército: ");
+        scanf(" %s", territorios[i].cor);       // Lê uma string simples (sem espaços)
+
+        // Leitura da quantidade de tropas
+        printf("Digite a quantidade de tropas: ");
+        scanf("%d", &territorios[i].tropas);
+
+        printf("\n");
+    }
+
+    // Exibição dos dados cadastrados
+    printf("=== Lista de Territórios Cadastrados ===\n\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Território %d:\n", i + 1);
+        printf("Nome: %s\n", territorios[i].nome);
+        printf("Cor do Exército: %s\n", territorios[i].cor);
+        printf("Quantidade de Tropas: %d\n", territorios[i].tropas);
+        printf("------------------------------\n");
+    }
+
+    return 0;
+}
